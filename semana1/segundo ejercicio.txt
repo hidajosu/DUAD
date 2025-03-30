@@ -1,0 +1,64 @@
+# Respuesta del segundo ejercicio (algoritmoalgoritmo que describa su rutina diaria con condiciones, condiciones múltiples y ciclos)
+
+1. Inicio.
+2. Mientras amanezca con vida
+    1. Si pude dormir bien y Si tengo energía suficiente:
+    2. Ir al gimnasio:
+        1. Levantarme de la cama a las 3:30 am
+        2. Ponerme ropa deportiva
+        3. Montarme al carro
+        4. Manejar hasta el gimnasio
+        5. Hacer la rutina de ejercicios correspondiente
+        6. Montarme al carroI de vuelta
+        7. Manejar hasta mi casa
+        8. Bañarme
+    3. Si no pude dormir bien y si no tengo energía suficiente:
+    4. Dormir hasta las 8
+3. Levantarme de la cama
+4. Bañarme
+5. Si tengo hambre
+    1. Cocinar desayuno
+        1. Abrir 6 claras de huevo
+        2. Echarlas en un recipiente
+        3. Encender la cocina
+        4. Colocar un sartén en el disco de la cocina encendido
+        5. Echar las claras de huevo en el sartén
+        6. Esperar a que se cocinen
+    2. Comer el desayuno
+    3. Lavar los utensilios usados
+6. Si no tengo hambre
+    1. No comer nada
+7. Enceder la computadora para empezar a trabajar corrido hasta el mediodía
+8. Si tengo hambre
+    1. Cocinar almuerzo
+        1. Abrir 2 latas de atún en agua y echarlas en un recipiente
+        2. Abrir 5 claras de huevo y echarlas en un recipiente
+        3. Encender la cocina
+        4. Colocar un sartén en el disco de la cocina encendido
+        5. Echar el atún con las claras de huevo en el sartén
+        6. Esperar a que se cocinen
+    2. Comer el almuerzo
+    3. Lavar los utensilios usados
+9. Si no tengo hambre
+    1. No comer nada
+10. Continuar trabajando hasta las 4pm
+11. Si tengo sueño
+    1. Dormir una siesta de 2 horas
+12. Si no tengo sueño
+    1. Montarme en la bicicleta estacionaria por 2 horas
+    2. Bañarme
+    3. Ponerme ropa olgada
+13. Si tengo hambre
+    1. Cocinar cena
+        1. Abrir 2 latas de atún en agua y echarlas en un recipiente
+        2. Abrir 5 claras de huevo y echarlas en un recipiente
+        3. Encender la cocina
+        4. Colocar un sartén en el disco de la cocina encendido
+        5. Echar el atún con las claras de huevo en el sartén
+        6. Esperar a que se cocinen
+    2. Comer el almuerzo
+    3. Lavar los utensilios usados
+14. Si no tengo hambre
+    1. No comer nada
+15. Irme a dormir
+16. Fin

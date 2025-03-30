@@ -1,0 +1,19 @@
+->DF de los 2 primeros pseudocódigos: https://lucid.app/lucidchart/63a1e63f-80f5-49ee-aabf-d905ff340f99/edit?invitationId=inv_25076cb6-9ee7-4e81-8a92-3398fa3157b2
+
+->DF del 3er pseudocódigo https://lucid.app/lucidchart/8e88be2b-6a12-46e9-96c2-5c22865f6e7b/edit?viewport_loc=-403%2C182%2C2385%2C1120%2C0_0&invitationId=inv_f0918263-0820-4ebe-9295-c979f9199358 
+
+->DF de los primeros 2 pseudocódigos extra https://lucid.app/lucidchart/27cfe850-ed40-4b0f-86a8-fa8661dfede4/edit?beaconFlowId=2C7AC5D7EFCAE692&invitationId=inv_aff8ea81-d315-400b-844a-129cf8cf134e&page=0_0#
+
+->DF del 3er pseudocódigo extra https://lucid.app/lucidchart/ccb38600-5674-4bbd-894a-c7d3f9477926/edit?view_items=D.RP~ybR8fnU&invitationId=inv_ba2c1404-5674-433f-802e-d59438e0b7af
+
+
+----------------------------
+
+
+—>DF 1 (Cree un diagrama de flujo que le pida 5 números al usuario y muestre el mayor): https://lucid.app/lucidchart/aa5a9a20-3a56-43c8-9850-f1bb185935a4/edit?invitationId=inv_d5d0396c-2731-45d7-bff4-d5a52772b2b5
+
+—>DF 2 (Cree un diagrama de flujo que le pida un numero al usuario y muestre “Fizz” si es divisible entre 3, “Buzz” si es divisible entre 5, y “FizzBuzz” si es divisible entre ambos): https://lucid.app/lucidchart/78642366-8446-4454-95c9-d4b4d4fc4593/edit?invitationId=inv_7d806329-a4b9-4d89-bd14-408cf129ff47
+
+—>DF 3 (Cree un diagrama de flujo que le pida 100 números al usuario y muestre la suma de todos): https://lucid.app/lucidchart/8e88be2b-6a12-46e9-96c2-5c22865f6e7b/edit?invitationId=inv_f0918263-0820-4ebe-9295-c979f9199358
+
+—>DF 4 (Cree un diagrama de flujo que le pida 100 números al usuario y muestre el mayor de todos): https://lucid.app/lucidchart/abf60925-6be0-4c95-a95a-e0e500201483/edit?viewport_loc=-1137%2C81%2C4100%2C1925%2C0_0&invitationId=inv_c2c9fd15-f1dd-4917-a820-df8d6001f3d6
