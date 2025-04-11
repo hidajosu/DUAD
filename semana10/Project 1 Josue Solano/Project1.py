@@ -1,32 +1,4 @@
-# # Requerimientos
-
-# Cree un programa tener tenga una interfaz por linea de comando (es decir, a base de `inputs` y `prints`). Este debe tener un menu que me permita accesar a todas las funciones (**deberá validar que se ingrese una opción del valida del menú**):
-
-# 1. Ingresar información de `n` cantidad de estudiantes, *uno por uno*.
-#     1. Cada estudiante debe incluir:
-#         1. Nombre completo
-#         2. Sección (ejemplo: *11B*)
-#         3. Nota de español
-#         4. Nota de inglés
-#         5. Nota de sociales
-#         6. Nota de ciencias
-#     2. Deberá validar que las notas ingresadas sean validas (números de 0 a 100) y seguir pidiéndola hasta que sea valida.
-# 2. Ver la información de todos los estudiantes ingresados.
-# 3. Ver el top 3 de los estudiantes con la mejor nota promedio (*es decir, el promedio de su* `nota de español`+ `nota de inglés` + `nota de sociales` + `nota de ciencias`).
-# 4. Ver la nota promedio entre las notas de todos los estudiantes (es decir, el promedio del `promedio de notas` *de cada uno*). 
-# 5. Exportar todos los datos actuales a un archivo CSV.
-# 6. Importar los datos de un archivo CSV previamente exportado.
-#     1. Si no hay un archivo previamente exportado, debe de decírselo al usuario.
-
-# ---
-
-# Divida el proyecto en los siguientes módulos:
-
-# - `main`: tendrá el punto de entrada del programa.
-# - `menu`: tendrá toda la lógica relacionada al menu de opciones.
-# - `actions`: tendrá toda la lógica de las acciones del menu, excepto las de exportar e importar datos.
-# - `data`: tendrá toda la lógica de exportación e importación de datos
-
+import csv
 
 print("""--------------------------Welcome to your grading assiting program--------------------------
 This tool is aimed to help you managing your students' grades for a series of subjects, among them:
@@ -38,6 +10,8 @@ This tool is aimed to help you managing your students' grades for a series of su
       
 Let's begin by entering the amount of students you'd like to enter the information for\n\n\n""")
 
+globalList=[]
+top3=[]
 
 def number_students():
     global amount_students
@@ -63,17 +37,14 @@ def student_name():
 
 def class_number():
     global classID,dictclassID
-    classID=input("Enter the student's class ID (for examplo 11B): ")
-    if classID.isdigit():
-        print("Incorrect data entered, the class ID needs to contain numbers and letter and cannot surpass 3 characters, try again")
-        class_number()
-    elif len(classID)!=3:
-        print("Incorrect data entered, the class ID needs to contain numbers and letter and cannot surpass 3 characters, try again")
-        class_number()
+    classID=input("Enter the student's class ID (for example 1234): ")
+    if len(classID)==4 and classID.isdigit():
+        print("The entered Class ID is: ", classID)
+        dictclassID={"Student's Class ID":classID}
     else:
-        print("The entered class ID is: ",classID)
-        dictclassID={"Student's Class ID":classID}      
-
+        print("The Class ID you entered isn't valid, try again. Keep in mind that this ID can only have numbers and needs to be composed by 4 digits")
+        class_number()
+   
 
 def grade_spanish():
     global spanish,dictspanish
@@ -95,7 +66,7 @@ def grade_english():
     global english,dictenglish
     english=input("Enter the grade for the student's English grade: ")
     if english.isdigit():
-        english=int(spanish)
+        english=int(english)
         if english==0 or english<=100:
             print("The entered grade for English: ",english)
             dictenglish={"English grade":english}
@@ -140,27 +111,29 @@ def grade_science():
 
 
 def average():
-        global avarage_grade_individual,dictavarage, global_avarage, top3
-        avarage_grade_individual=(spanish + english + science + social) /4
-        dictavarage= {"Avarage score for this student's grades": avarage_grade_individual}
-        global_avarage=0
-        counter=0
-        while counter<amount_students:
-            global_avarage=avarage_grade_individual+global_avarage
-            counter=counter+1
-        global_avarage=global_avarage/amount_students
-        counter2=0
-        while counter2<amount_students:
+        global avarage_grade_individual,dictavarage,global_avarage,top3
+        try: 
+            avarage_grade_individual=(spanish + english + science + social) /4
+            dictavarage= {"Avarage score for this student's grades": avarage_grade_individual}
+            global_avarage=0
+            counter=0
+            while counter<amount_students:
+                global_avarage=avarage_grade_individual+global_avarage
+                counter=counter+1
+            global_avarage=global_avarage/amount_students
             top3=[]
-            top3.append(avarage_grade_individual)
-            counter2=counter2+1
-        top3.sort()
+            counter2=0
+            while counter2<amount_students:
+                top3.append(avarage_grade_individual)
+                counter2=counter2+1
+            top3.sort()
 
+        except IndexError as error:
+            print("There was an error: ", error)
+        
 
 def data_introduction():
     global student_info
-    global globalList
-    globalList=[]
     counter3=0
     while counter3 < amount_students:
         student_name()
@@ -169,9 +142,40 @@ def data_introduction():
         grade_english()
         grade_social()
         grade_science()
+        average()
         student_info=[dictname,dictclassID,dictspanish,dictenglish,dictsocial,dictscience,dictavarage]
         globalList.append(student_info)
         counter3=counter3+1
+    print(globalList)
+    headers = ("Name", "Student's Class ID", "Spanish", "English grade", "Social Studies grade", "Science grade", "Avarage score for this student's grades")
+    with open("scores.csv", mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(globalList)
+        
+
+
+def data_export():
+    import csv
+    global headers
+    if len(globalList)==0:
+        print("We can't export nothing yet since no data has been entered yet, please proceed to enter data so it can later be saved and exported")
+    else:
+        headers=("Name", "Student's Class ID", "Spanish", "English grade", "Social Studies grade", "Science grade", "Avarage score for this student's grades")
+        with open("Score file.csv", "a", encoding="utf-8") as file:
+            writer=csv.writer(file)
+            writer.writerows(globalList)
+
+
+def data_import():
+    import csv
+    global headers
+    if len(globalList)==0:
+        print("We can't import nothing yet since no data has been exported to beging with, please proceed to enter data so it can later be saved and exported, and then so it can be imported")
+    else:
+        with open("Score file.csv", "r", encoding="utf-8") as file:
+            csv.reader=csv.reader(file)
+            
+
 
 
 def menu():
@@ -187,24 +191,45 @@ def menu():
 
           """)
     options=input("Enter your desired option: ")
-    if options.isdigit():
-        match options:
-            case 1:
-                number_students()
-                data_introduction()
-                menu()
-            case 2:
-                print("The entered data is: ", globalList)
-                menu()
-            case 3:
-                print("As per the chosen option, you wish to see the top 3 avarage scores from the analized students, these avarage scores are: ",top3[0]," ",top3[1]," ",top3[2])
-                menu()
-            case 4:
-                print("As per your chosen option, you wish to see the average of the avarage grades from all the students\nThis value is: ",global_avarage)
-                menu()
-                
+    try:
+        if options.isdigit():
+            options=int(options)
+            match options:
+                case 1:
+                    number_students()
+                    data_introduction()
+                    menu()
+                case 2:
+                    print("The entered data is: ", globalList)
+                    menu()
+                case 3:
+                    print("As per the chosen option, you wish to see the top 3 avarage scores from the analized students, these avarage scores are: ",top3[0],top3[1],top3[2])
+                    menu()
+                case 4:
+                    print("As per your chosen option, you wish to see the average of the avarage grades from all the students\nThis value is: ",global_avarage)
+                    menu()
+                case 5:
+                    print("As per your chosen option, you wish to export the information into an CSV file")
+                    data_export()
+                    menu()
+                case 6:
+                    print("As per your chosen option, you wish to import the information you had sent to the CSV file")
+                    data_import()
+                    menu()
+                case 7:
+                    print("As per your chosen option, you wish to get out of the program, thanks for using our system, bye")
+                case _:
+                    print("You entered an invalid entry, try again")
+                    menu()
+        else:
+            print("You entered an invalid entry, try again")
+            menu()
+    except Exception as error:
+        print("There was an error: ",error)
+        menu()           
 
-menu()       
+menu()
+    
 
 
 # 4. Ver la nota promedio entre las notas de todos los estudiantes (es decir, el promedio del `promedio de notas` *de cada uno*). 
