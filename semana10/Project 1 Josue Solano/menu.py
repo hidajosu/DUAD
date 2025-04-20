@@ -28,9 +28,3 @@ def get_choice_from_user():
     
     
     
-    # while True:
-    #     try:
-    #         choice = int(input("Choose an option (0-6): "))
-    #         return choice
-    #     except ValueError:
-    #         print("Invalid input, please enter a number between 0 and 6.")
