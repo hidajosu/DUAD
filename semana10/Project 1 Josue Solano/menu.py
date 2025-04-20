@@ -1,42 +1,36 @@
-from actions import *
-from data import *
-from menu import *
-
-
-
-def menu():
-    print("""Enter the a valid number from 1 to 6 to perform a desired task:
+def display_menu():
+    print("""
           
-          1-->Enter the information about the students you want to record data for
-          2-->Show the entered information
-          3-->Show the top 3 students with the best avarage grades 
-          4-->Show the average of the avarage grades from all the students
-          5-->Export all entered data to a CSV file
-          6-->Import data from a CSV file which was exported beforehand using the program (if there's no previouly uploaded file, the program will let you know about this)
+                            ====================Menu====================
+          Enter one of the following options so the system can assist you in an specific way:
+          For the system to work, you need to input a number from 0 to 7, any other digit or character will not work
+    -->1: This option will allow you to enter new information related to an specific student
+    -->2: This option will allow you to view all students' information
+    -->3: This option will allow you to view the top 3 students by average grade (as long as there are at least 3 grades stored in the system)
+    -->4: This option will allow you to view the overall average of all students
+    -->5: This option will allow you to export the entered data to a CSV file
+    -->6: This option will allow you to import data from a CSV (that file has to exist first)
+    -->7: This option will allow you to exit the system""")
 
-
-          """)
-    options=input("Enter your desired option: ")
-    try:
-        if options.isdigit():
-            options=int(options)
-            match options:
-                case 1:
-                    number_students()
-                    data_introduction()
-                    menu()
-                case 2:
-                    print("The entered data is: ", globalList)
-                    menu()
-                case 3:
-                    print("As per the chosen option, you wish to see the top 3 avarage scores from the analized students, these avarage scores are: ",top3[0],top3[1],top3[2])
-                    menu()
-                case 4:
-                    print("As per your chosen option, you wish to see the average of the avarage grades from all the students\nThis value is: ",global_avarage)
-                    menu()
-                case 5:
-                    print("As per your chosen option, you wish to export the information into an CSV file")
-                    export()
-    except Exception as error:
-        print("There was an error: ",error)
-        menu()           
+def get_choice_from_user():
+    choice = input("Enter an option (you need to input a number from 0 to 7, any other digit or character will not work): ")
+    if choice.isdigit():
+        choice=int(choice)
+        return choice
+    else:
+        print("No valid input entered, try again")
+        get_choice_from_user()
+    
+    
+    
+    
+    
+    
+    
+    
+    # while True:
+    #     try:
+    #         choice = int(input("Choose an option (0-6): "))
+    #         return choice
+    #     except ValueError:
+    #         print("Invalid input, please enter a number between 0 and 6.")

@@ -1,43 +1,35 @@
-from menu import *
+from turtle import st
+from menu import display_menu, get_choice_from_user
+from actions import add_student, view_students, top_3_students, average_of_all_students
+from data import export_data, import_data
 
+students = [] #I still can't get this project to work withou this variable as a Global variable :/
 
-# # Requerimientos
+def main(): #I could've done this using the "match-case statement"....you tell e if I need to change it or not
+    while True:
+        display_menu()
+        choice = get_choice_from_user()
+        if choice == 1:
+            add_student(students)
+        elif choice == 2:
+            view_students(students)
+        elif choice == 3:
+            top_3_students(students)
+        elif choice == 4:
+            average_of_all_students(students)
+        elif choice == 5:
+            export_data(students)
+        elif choice == 6:
+            import_data(students)
+        elif choice == 7:
+            print("You've chosen to exit the program, good bye")
+            break
+        else:
+            print("Invalid option, please try again.")
 
-# Cree un programa tener tenga una interfaz por linea de comando (es decir, a base de `inputs` y `prints`). Este debe tener un menu que me permita accesar a todas las funciones (**deberá validar que se ingrese una opción del valida del menú**):
+print("""======================================================================================================================================================
+Welcome to the 1st project from the Lyfter Academy, this is a Grade Control System which has the intent og helping out managins student grades in an easier way
+======================================================================================================================================================""")
+main()
 
-# 1. Ingresar información de `n` cantidad de estudiantes, *uno por uno*.
-#     1. Cada estudiante debe incluir:
-#         1. Nombre completo
-#         2. Sección (ejemplo: *11B*)
-#         3. Nota de español
-#         4. Nota de inglés
-#         5. Nota de sociales
-#         6. Nota de ciencias
-#     2. Deberá validar que las notas ingresadas sean validas (números de 0 a 100) y seguir pidiéndola hasta que sea valida.
-# 2. Ver la información de todos los estudiantes ingresados.
-# 3. Ver el top 3 de los estudiantes con la mejor nota promedio (*es decir, el promedio de su* `nota de español`+ `nota de inglés` + `nota de sociales` + `nota de ciencias`).
-# 4. Ver la nota promedio entre las notas de todos los estudiantes (es decir, el promedio del `promedio de notas` *de cada uno*). 
-# 5. Exportar todos los datos actuales a un archivo CSV.
-# 6. Importar los datos de un archivo CSV previamente exportado.
-#     1. Si no hay un archivo previamente exportado, debe de decírselo al usuario.
-
-# ---
-
-# Divida el proyecto en los siguientes módulos:
-
-# - `main`: tendrá el punto de entrada del programa.
-# - `menu`: tendrá toda la lógica relacionada al menu de opciones.
-# - `actions`: tendrá toda la lógica de las acciones del menu, excepto las de exportar e importar datos.
-# - `data`: tendrá toda la lógica de exportación e importación de datos
-
-
-print("""--------------------------Welcome to your grading assiting program--------------------------
-This tool is aimed to help you managing your students' grades for a series of subjects, among them:
--->Spanish
--->English
--->Social Studies
--->Science
-      
-      
-Let's begin by entering the amount of students you'd like to enter the information for\n\n\n""")
-menu()
+    

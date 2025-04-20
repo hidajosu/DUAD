@@ -10,50 +10,47 @@ This tool is aimed to help you managing your students' grades for a series of su
       
 Let's begin by entering the amount of students you'd like to enter the information for\n\n\n""")
 
-globalList=[]
-top3=[]
+globaldata=[]
+print(type(globaldata))
 
 def number_students():
-    global amount_students
     amount_students=input("Enter the number of students you'd like to enter data for: ")
     if amount_students.isdigit():
         amount_students=int(amount_students)
         print("The entered amount of students to enter data for is: ",amount_students)
+        return amount_students
     else:
         print("Incorrect data entered, try again")
         number_students()
         
 
 def student_name():
-    global name,dictname
     name=input("Enter the student's name: ")
     if name.isdigit():
         print("Incorrect data entered, try again")
         student_name()
     else:
         print("The entered name is: ",name)
-        dictname={"Student's name":name}  
+        return name
 
 
 def class_number():
-    global classID,dictclassID
     classID=input("Enter the student's class ID (for example 1234): ")
     if len(classID)==4 and classID.isdigit():
         print("The entered Class ID is: ", classID)
-        dictclassID={"Student's Class ID":classID}
+        return classID
     else:
         print("The Class ID you entered isn't valid, try again. Keep in mind that this ID can only have numbers and needs to be composed by 4 digits")
         class_number()
    
 
 def grade_spanish():
-    global spanish,dictspanish
     spanish=input("Enter the grade for the student's Spanish grade: ")
     if spanish.isdigit():
         spanish=int(spanish)
         if spanish==0 or spanish<=100:
             print("The entered grade for Spanish: ",spanish)
-            dictspanish={"Spanish grade":spanish}
+            return spanish
         else:
             print("The grade can't be lower than 0 or higher than 100")
             grade_spanish()
@@ -63,13 +60,12 @@ def grade_spanish():
 
 
 def grade_english():
-    global english,dictenglish
     english=input("Enter the grade for the student's English grade: ")
     if english.isdigit():
         english=int(english)
         if english==0 or english<=100:
             print("The entered grade for English: ",english)
-            dictenglish={"English grade":english}
+            return english
         else:
             print("The grade can't be lower than 0 or higher than 100")
             grade_english()
@@ -79,13 +75,12 @@ def grade_english():
 
 
 def grade_social():
-    global social, dictsocial
     social=input("Enter the grade for the student's Social Studies grade: ")
     if social.isdigit():
         social=int(social)
         if social==0 or social<=100:
             print("The entered grade for Social Studies: ",social)
-            dictsocial={"Social Studies grade":social}
+            return social
         else:
             print("The grade can't be lower than 0 or higher than 100")
             grade_social()
@@ -95,13 +90,12 @@ def grade_social():
 
 
 def grade_science():
-    global science,dictscience
     science=input("Enter the grade for the student's Science grade: ")
     if science.isdigit():
         science=int(science)
         if science==0 or science<=100:
             print("The entered grade for Science: ",science)
-            dictscience={"Science grade":science}
+            return science
         else:
             print("The grade can't be lower than 0 or higher than 100")
             grade_science()
@@ -110,20 +104,37 @@ def grade_science():
         grade_science()
 
 
-def average():
-        global avarage_grade_individual,dictavarage,global_avarage,top3
+def individual_average():
+        avarage_grade_individual=(grade_spanish()+grade_english()+grade_social()+grade_science())/4
+        return avarage_grade_individual
+
+        
+    
+def global_average():
+        g_avarage=0
+        counter=0
+        while counter<number_students():
+            g_avarage=g_avarage+individual_average()
+            counter=counter+1
+        g_avarage=g_avarage/4
+        print("The avarage grade of all the students' grades (the avarage score of the the avarage scores) is: ", g_avarage)
+        return g_avarage
+
+
+
+
         try: 
-            avarage_grade_individual=(spanish + english + science + social) /4
-            dictavarage= {"Avarage score for this student's grades": avarage_grade_individual}
+            avarage_grade_individual=(grade_spanish()+grade_english()+grade_social()+grade_science()) /4
             global_avarage=0
             counter=0
-            while counter<amount_students:
+            n_students=number_students()
+            while counter<n_students:
                 global_avarage=avarage_grade_individual+global_avarage
                 counter=counter+1
-            global_avarage=global_avarage/amount_students
+            global_avarage=global_avarage/n_students
             top3=[]
             counter2=0
-            while counter2<amount_students:
+            while counter2<n_students:
                 top3.append(avarage_grade_individual)
                 counter2=counter2+1
             top3.sort()
@@ -133,37 +144,52 @@ def average():
         
 
 def data_introduction():
-    global student_info
+    global globaldata
     counter3=0
-    while counter3 < amount_students:
-        student_name()
-        class_number()
-        grade_spanish()
-        grade_english()
-        grade_social()
-        grade_science()
-        average()
-        student_info=[dictname,dictclassID,dictspanish,dictenglish,dictsocial,dictscience,dictavarage]
-        globalList.append(student_info)
+    n_students=number_students()
+    top_scores=[]
+    g_avarage=0
+    while counter3 < n_students:
+        s_name = student_name()
+        c_number = class_number()
+        g_spanish = grade_spanish()
+        g_english = grade_english()
+        g_social = grade_social()
+        g_science = grade_science()
+        avarage_grade_individual=(g_spanish+g_english+g_social+g_science)/4
+        top_scores.append(avarage_grade_individual)
+        g_avarage=avarage_grade_individual+g_avarage
+        student_info={"Student's name": s_name, "Student's Class ID": c_number, "Spanish grade": g_spanish, "Englisgh grade": g_english, "Social Studies grade": g_social, "Science grade": g_science, "Avarage score for this student's grades": avarage_grade_individual, "Avarage score for all student's grades": g_avarage}
+        print(type(student_info))
+        globaldata.append(student_info)
         counter3=counter3+1
-    print(globalList)
-    headers = ("Name", "Student's Class ID", "Spanish", "English grade", "Social Studies grade", "Science grade", "Avarage score for this student's grades")
-    with open("scores.csv", mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(globalList)
+    print(type(globaldata))
+    print(globaldata)
+    top_scores.sort()
+    g_avarage=g_avarage/n_students
+    print("The avarage of the avarage scores is: ",g_avarage)
+    return g_avarage, top_scores
+
+
+
+
+    # headers = ("Name", "Student's Class ID", "Spanish", "English grade", "Social Studies grade", "Science grade", "Avarage score for this student's grades")
+    # with open("scores.csv", mode='w', newline='') as file:
+    #     writer = csv.writer(file)
+    #     writer.writerows(globalList)
         
 
 
 def data_export():
     import csv
     global headers
-    if len(globalList)==0:
+    if len(globaldata)==0:
         print("We can't export nothing yet since no data has been entered yet, please proceed to enter data so it can later be saved and exported")
     else:
         headers=("Name", "Student's Class ID", "Spanish", "English grade", "Social Studies grade", "Science grade", "Avarage score for this student's grades")
         with open("Score file.csv", "a", encoding="utf-8") as file:
             writer=csv.writer(file)
-            writer.writerows(globalList)
+            writer.writerows(globaldata)
 
 
 def data_import():
@@ -196,17 +222,16 @@ def menu():
             options=int(options)
             match options:
                 case 1:
-                    number_students()
                     data_introduction()
                     menu()
                 case 2:
-                    print("The entered data is: ", globalList)
+                    print("The entered data is: ", globaldata)
                     menu()
                 case 3:
                     print("As per the chosen option, you wish to see the top 3 avarage scores from the analized students, these avarage scores are: ",top3[0],top3[1],top3[2])
                     menu()
                 case 4:
-                    print("As per your chosen option, you wish to see the average of the avarage grades from all the students\nThis value is: ",global_avarage)
+                    print("As per your chosen option, you wish to see the average of the avarage grades from all the students\nThis value is: ", )
                     menu()
                 case 5:
                     print("As per your chosen option, you wish to export the information into an CSV file")
