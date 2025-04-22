@@ -1,0 +1,17 @@
+# Respuesta de primer ejercicio (algoritmo para ver un video en Youtube)
+
+1. Inicio.
+2. Mientras tenga tiempo y ganas de ver un video & tenga energía eléctrica
+    1. Si cuenta con servicio de internet: 
+        1. Verfique la conexión está activa 
+    2. Si no cuenta con servicio de internet:
+        1. Adquiera un servicio con la compañia de su preferencia
+    3. Si tiene equipo apto para abrir páginas web como www.youtube.com
+        1. Abra el navegador
+        2. Entre a www.youtube.com
+    4. Si no tiene equipo apto para abrir páginas web como youtube
+        1. Adquiera un equipo apto en la tienda de su preferencia
+        2. Una vez adquirido el equipo necesario, ingrese a www.youtube.com
+    5. Digite el nombre del video deseado en la barra de búsqueda de youtube
+    6. Vea el video
+3. Fin

@@ -1,0 +1,27 @@
+Ejercicio 2
+
+Cree un pseudocódigo que le pida un `tiempo en segundos` al usuario y calcule si es menor o mayor a 10 minutos. Si es menor, muestre cuantos segundos faltarían para llegar a 10 minutos. Si es mayor, muestre “*Mayor*”.
+
+1. *Ejemplos*:
+    1. 1040 → Mayor
+    2. 140 → 460
+    3. 599 → 1
+
+Respuesta
+
+1. Inicio
+2. Definir (`tiempo_en_segundos)`
+3. Definir (`segundos_restantes)`
+4. Definir (`diez_minutos)`
+5. `diez_minutos`= 600
+6. Mostrar(”Por favor digite la cantidad de tiempo en segundos”)
+7. Pedir(`tiempo_en_segundos`)
+8. Si (`tiempo_en_segundos`>`diez_minutos`) entonces
+    1. Mostrar= ( “El tiempo ingresado es mayor a diez minutos”)
+    
+    Sino
+    
+    1. `segundos_restantes`= `diez_minutos - tiempo_en_segundos`
+    2. Mostrar= ( “La cantidad de segundos restantes para que el tiempo ingresado llegue a Diez Minutos es de”, `segundos_restantes`)
+9. FinSi
+10. Fin
