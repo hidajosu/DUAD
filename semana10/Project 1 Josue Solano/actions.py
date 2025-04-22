@@ -13,7 +13,7 @@ def add_student(students):
     science = get_valid_grade("Science")
 
     average = (spanish + english + social + science) / 4
-    student = {"name": name,"class ID": section,"grades": {"Spanish": spanish,"English": english,"Social Studies": social,"Science": science},"average": average}
+    student = {"Name": name,"Class ID": section,"Grades": {"Spanish": spanish,"English": english,"Social Studies": social,"Science": science},"Average": average}
     students.append(student)
     print("The information was added correctly, please review it: \n\n", student)
 
@@ -33,24 +33,24 @@ def view_students(students):
         print("No information entered yet, try entering data first before trying to review it")
     else:
         for student in students:
-            print("Name: ", student['name'])
-            print("Class ID: ",student['class ID'])
-            for subject, grade in student['grades'].items():
+            print("Name: ", student['Name'])
+            print("Class ID: ",student['Class ID'])
+            for subject, grade in student['Grades'].items():
                 print(f"{subject}: {grade}")
-            print(f"Average: {student['average']:.2f}")
+            print(f"Average: {student['Average']:.2f}")
 
 def top_3_students(students): #I have to be honest, I did get help from a friend of mine to get this one to work.....he tried to explain the Lambda part.....but I didn't get it quite well
     if len(students)<3 :
         print("No information entered yet or at least not enough information yet, try entering data first before trying to get the Top 3 scores")
     else:
-        sorted_students = sorted(students, key=lambda x: x["average"], reverse=True)[:3]
+        sorted_students = sorted(students, key=lambda x: x["Average"], reverse=True)[:3]
         print("\nTop 3 students by average grade:")
         for i, student in enumerate(sorted_students, start=1):
-            print(f"{i}. {student['name']} - Average: {student['average']:.2f}")
+            print(f"{i}. {student['Name']} - Average: {student['Average']:.2f}")
 
 def average_of_all_students(students):
     if len(students)==0:
         print("No information entered yet, try entering data first before trying to get the global avarage")
     else:
-        overall_average = sum(student['average'] for student in students) / len(students)
+        overall_average = sum(student['Average'] for student in students) / len(students)
         print(f"\nOverall average of all students: {overall_average}")
