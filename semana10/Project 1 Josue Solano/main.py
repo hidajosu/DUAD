@@ -25,7 +25,7 @@ def main(): #I could've done this using the "match-case statement"....you tell e
             print("You've chosen to exit the program, good bye")
             break
         else:
-            print("Invalid option, please try again.")
+            print("Invalid option, please try again")
 
 print("""======================================================================================================================================================
 Welcome to the 1st project from the Lyfter Academy, this is a Grade Control System which has the intent og helping out managins student grades in an easier way
