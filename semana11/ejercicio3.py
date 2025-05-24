@@ -37,9 +37,14 @@ class Human:
         self.right_arm = Arm("right")
         self.left_leg = Leg("left")
         self.right_leg = Leg("right")
+    
+    def my_full_body(self):
+        print("The human has ",human.head.eyes,"eyes")
+        print("The human's left hand has ",human.left_arm.hand.fingers,"fingers.")
+        print("The human's right foot has ",human.right_leg.feet.toes," toes")
 
-if __name__ == "__main__":
-    human = Human()
-    print("The human has ",human.head.eyes,"eyes")
-    print("The human's left hand has ",human.left_arm.hand.fingers,"fingers.")
-    print("The human's right foot has ",human.right_leg.feet.toes," toes")
+
+human = Human()
+human.my_full_body()
+
+
