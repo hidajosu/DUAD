@@ -51,7 +51,7 @@ class SavingsAccount(BankAccount):
     
     def savemoney(self,amount):
         amount=int(amount)
-        print("You want to save: ", amount)
+        print("You want to save:", amount)
         self.balance=self.balance+amount
         print("Your new balance is: ",self.balance)    
     
