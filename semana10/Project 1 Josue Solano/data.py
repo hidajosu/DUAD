@@ -9,34 +9,32 @@ def export_data(students):
         writer.writerow(["Name", "Class ID", "Spanish", "English", "Social Studies", "Science", "Average"])
         for index in students:
             writer.writerow([
-                index["name"],
-                index["class ID"],
-                index["grades"]["Spanish"],
-                index["grades"]["English"],
-                index["grades"]["Social Studies"],
-                index["grades"]["Science"],
-                index["average"]
+                index["Name"],
+                index["Class ID"],
+                index["Grades"]["Spanish"],
+                index["Grades"]["English"],
+                index["Grades"]["Social Studies"],
+                index["Grades"]["Science"],
+                index["Average"]
             ])
     print(f"Data exported successfully to {"students.csv"}.")
 
 def import_data(students):
     try:
         with open("students.csv", mode="r") as file:
-            reader = csv.DictReader(file)
+            reader = csv.DictReader(file) 
             for row in reader:
-                name, section, spanish, english, social, science, average = row
-                student = {
-                    "name": name,
-                    "section": section,
-                    "grades": {
-                        "spanish": spanish,
-                        "english": english,
-                        "social Studies": social,
-                        "science": science
+                students.append({
+                    "Name": row["Name"],
+                    "Class ID": row["Class ID"],
+                    "Grades": {
+                        "Spanish": float(row["Spanish"]),
+                        "English": float(row["English"]),
+                        "Social Studies": float(row["Social Studies"]),
+                        "Science": float(row["Science"])
                     },
-                    "average": average
-                }
-                students.append(student)
+                        "Average": float(row["Average"])
+                    })
         print(f"Data imported successfully from {"students.csv"}.")
     except Exception as error:
         print(f"There seems to be an error: {error}")
