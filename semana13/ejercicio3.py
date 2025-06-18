@@ -26,6 +26,6 @@ def enter_club(user):
     print(f"Welcome! User age: {user.age}")
 
 adult = User(date(2000, 1, 1))
-minor = User(date(2010, 1, 1))
+minor = User(date(2011, 1, 1))
 enter_club(adult)    
 enter_club(minor)
