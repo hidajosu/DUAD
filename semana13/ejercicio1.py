@@ -10,7 +10,7 @@ def print_params_and_return(func):
 def inifite_para(*args):
     suma_total = 0
     for i in args:
-        print("This parameter's value is: ", i)
+        print("This parameter's value is:", i)
         suma_total = suma_total + i
     print("La suma total de los valores es: ", suma_total)
     return suma_total

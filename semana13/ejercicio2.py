@@ -10,4 +10,4 @@ def only_numbers_allowed(func):
 def add(a, b):
     return a + b
 
-print(add(6, "c")) 
+print(add(6, "c ")) 
