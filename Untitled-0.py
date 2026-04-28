@@ -34,3 +34,4 @@ class Carro2(Carro):
 IS250=Carro2("IS250", 2026, 4, "Automática", "2500CC")
 print(IS250.marca)
 print(IS250.motor)
+print(Sequoia.transmision)
