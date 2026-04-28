@@ -29,7 +29,7 @@ Sequoia=Carro("Sequoia", 2026, 5, "Automática", "3500CC")
 print(Sequoia.motor)
 
 class Carro2(Carro):
-    marca="lexus"
+    marca="Lexus"
 
 IS250=Carro2("IS250", 2026, 4, "Automática", "2500CC")
 print(IS250.marca)
